@@ -1,0 +1,32 @@
+#!/bin/sh
+uci set system.led_power=led
+uci set system.led_power.name='power'
+uci set system.led_power.sysfs='youku-yk1:blue:power'
+uci set system.led_power.trigger='default-on'
+uci set system.led_power.default='0'
+uci set system.led_wifi_led=led
+uci set system.led_wifi_led.name='wifi'
+uci set system.led_wifi_led.sysfs='youku-yk1:blue:air'
+uci set system.led_wifi_led.default='0'
+uci set system.led_wifi_led.trigger='netdev'
+uci set system.led_wifi_led.dev='wlan0-ap'
+uci set system.led_wifi_led.mode='tx rx'
+uci set system.led_usb=led
+uci set system.led_usb.name='USB'
+uci set system.led_usb.sysfs='youku-yk1:blue:usb'
+uci set system.led_usb.interval='50'
+uci set system.led_usb.default='0'
+uci set system.led_usb.trigger='usbport'
+uci set system.led_usb.port='usb1-port1'
+uci set system.@watchping[0]=watchping
+uci set system.@watchping[0].interface='wan'
+uci set system.@watchping[0].timeout='2m'
+uci set system.@watchping[0].pinghosts='8.8.8.8'
+uci set system.@watchping[0].pinginterval='20s'
+uci set system.@led[3]=led
+uci set system.@led[3].name='WAN'
+uci set system.@led[3].sysfs='youku-yk1:blue:wan'
+uci set system.@led[3].default='0'
+uci set system.@led[3].trigger='netdev'
+uci set system.@led[3].dev='eth0'
+uci commit system
